@@ -347,7 +347,7 @@
       <filter class="solr.LowerCaseFilterFactory"/>
       <filter class="solr.StopFilterFactory" words="stopwords.txt,lang/stopwords_uk.txt"/>
       <filter class="org.apache.lucene.analysis.morfologik.MorfologikFilterFactory"
-              dictionary="org/apache/lucene/analysis/uk/ukrainian.dict"/>
+              dictionary="ua/net/nlp/ukrainian.dict"/>
       <filter class="solr.ASCIIFoldingFilterFactory"/>
       <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
     </analyzer>
