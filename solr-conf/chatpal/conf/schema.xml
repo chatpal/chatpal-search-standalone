@@ -82,7 +82,7 @@
       <tokenizer class="solr.StandardTokenizerFactory"/>
       <!-- Remove Stopwords of ALL languages (as we want high precision regardless of recall) -->
       <filter class="solr.StopFilterFactory" ignoreCase="true"
-              words="stopwords.txt,lang/stopwords_cs.txt,lang/stopwords_de.txt,lang/stopwords_el.txt,lang/stopwords_lv.txt,lang/stopwords_en.txt,lang/stopwords_es.txt,lang/stopwords_fi.txt,lang/stopwords_fr.txt,lang/stopwords_hu.txt,lang/stopwords_it.txt,lang/stopwords_nl.txt,lang/stopwords_no.txt,lang/stopwords_pl.txt,lang/stopwords_pt_br.txt,lang/stopwords_pt.txt,lang/stopwords_ro.txt,lang/stopwords_ru.txt,lang/stopwords_sv.txt,lang/stopwords_tr.txt,lang/stopwords_uk.txt" />
+              words="stopwords.txt,lang/stopwords_cz.txt,lang/stopwords_de.txt,lang/stopwords_el.txt,lang/stopwords_lv.txt,lang/stopwords_en.txt,lang/stopwords_es.txt,lang/stopwords_fi.txt,lang/stopwords_fr.txt,lang/stopwords_hu.txt,lang/stopwords_it.txt,lang/stopwords_nl.txt,lang/stopwords_no.txt,lang/stopwords_pl.txt,lang/stopwords_pt_br.txt,lang/stopwords_pt.txt,lang/stopwords_ro.txt,lang/stopwords_ru.txt,lang/stopwords_sv.txt,lang/stopwords_tr.txt,lang/stopwords_uk.txt" />
       <filter class="solr.LowerCaseFilterFactory"/>
       <filter class="solr.ASCIIFoldingFilterFactory"/>
     </analyzer>
@@ -345,7 +345,7 @@
       <charFilter class="solr.HTMLStripCharFilterFactory"/>
       <tokenizer class="solr.StandardTokenizerFactory"/>
       <filter class="solr.LowerCaseFilterFactory"/>
-      <filter class="solr.StopFilterFactory" words="org/apache/lucene/analysis/uk/stopwords.txt"/>
+      <filter class="solr.StopFilterFactory" words="stopwords.txt,lang/stopwords_uk.txt"/>
       <filter class="org.apache.lucene.analysis.morfologik.MorfologikFilterFactory"
               dictionary="org/apache/lucene/analysis/uk/ukrainian.dict"/>
       <filter class="solr.ASCIIFoldingFilterFactory"/>
