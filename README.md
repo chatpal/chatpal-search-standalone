@@ -21,6 +21,9 @@ docker build -t chatpal/search-standalone .
 ```
 
 Optional: push the image to dockerhub (after building):
+
 ```
 docker push chatpal/search-standalone
 ```
+
+You can find the current version also on [dockerhub](https://hub.docker.com/r/chatpal/search-standalone/).
