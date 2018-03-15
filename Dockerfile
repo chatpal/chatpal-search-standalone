@@ -18,12 +18,14 @@ ADD \
     https://repo.maven.apache.org/maven2/org/carrot2/morfologik-stemming/2.1.1/morfologik-stemming-2.1.1.jar \
     https://repo.maven.apache.org/maven2/org/carrot2/morfologik-fsa/2.1.1/morfologik-fsa-2.1.1.jar \
     https://repo.maven.apache.org/maven2/ua/net/nlp/morfologik-ukrainian-search/3.9.0/morfologik-ukrainian-search-3.9.0.jar \
-    https://repo.redlink.io/mvn/content/groups/public/io/chatpal/chatpal-api/solr-ext/0.0.1-SNAPSHOT/solr-ext-0.0.1-20180313.084541-3.jar \
+    https://repo.redlink.io/mvn/content/groups/public/io/chatpal/chatpal-api/solr-ext/0.0.1-SNAPSHOT/solr-ext-0.0.1-20180315.082939-4.jar \
     /opt/solr/server/solr/configsets/chatpal/lib/
 
 USER root
 # docker-hub does not yet support the --chown-flag
 RUN chown -R solr:solr /opt/solr/server/solr/configsets/chatpal
+# create data-dir
+#RUN mkdir -p /data/chatpal && chown -R solr:solr /data/chatpal
 USER solr
 
 # Create the chatpal solr core
