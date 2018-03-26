@@ -444,6 +444,10 @@
         </lst>
     </requestHandler>
 
+    <!-- SUGGEST !!BETA!! -->
+    <requestHandler name="/chatpal/suggest" class="io.chatpal.solr.ext.handler.SuggestionRequestHandler">
+    </requestHandler>
+
     <!-- END OF THE PUBLIC ENDPOINTS -->
 
     <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler"/>

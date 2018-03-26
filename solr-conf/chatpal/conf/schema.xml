@@ -10,7 +10,6 @@
   <field name="type" type="string" indexed="true" stored="true" required="true" multiValued="false"/>
 
   <field name="rid" type="string"   indexed="true" stored="true" multiValued="false"/>
-  <field name="text" type="text_all" indexed="true" stored="true" multiValued="false"/>
   <field name="user" type="string"   indexed="true" stored="true" multiValued="false"/>
   <!-- TODO extend to username -->
   <field name="created" type="tdate" indexed="true" stored="true" multiValued="false"/>
@@ -50,6 +49,12 @@
   <copyField source="text_*" dest="context" />
   <copyField source="user_*" dest="context" />
   <copyField source="room_*" dest="context" />
+
+  <field name="suggestion" type="text_all" indexed="true" stored="true" multiValued="true"/>
+  <copyField source="text_*" dest="suggestion" />
+  <copyField source="user_username" dest="suggestion" />
+  <copyField source="user_name" dest="suggestion" />
+  <copyField source="room_*" dest="suggestion" />
 
   <uniqueKey>uid</uniqueKey>
 
