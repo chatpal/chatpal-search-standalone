@@ -65,9 +65,6 @@ docker run -d --name chatpal-proxy \
 echo "Go to http://localhost:8990/solr/ to check that it's up and running."
 ```
 
-
-
-
 ## Extensions
 
 To make use of the full cloud-flexibiltiy of Solr (e.g. also running multiple Zookeeper nodes) please 
@@ -79,7 +76,6 @@ refer to the [Docker-Solr documentation][2].
 docker stop chatpal-proxy solr3 solr2 solr1 zookeeper
 docker rm chatpal-proxy solr3 solr2 solr1 zookeeper
 docker network rm netzksolr
-docker rmi chatpal-search-standalone-cloud
 ```
 
 [1]:https://github.com/docker-solr/docker-solr/blob/master/Docker-FAQ.md#can-i-run-zookeeper-and-solr-clusters-under-docker
