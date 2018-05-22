@@ -12,6 +12,11 @@ docker run -d --name chatpal-search -p 8983:8983 chatpal/search-standalone
 
 and point the chatpal-search provider to the following url: `http://YOUR-DOCKER-IP:8983/solr/chatpal`
 
+### Solr Cloud
+
+If you need to run Chatpal-Search in a Solr-Cloud environment, please have a look into
+[Running Chatpal in a dockerized Solr Cloud](ChatpalSolrCloud.md)
+
 ## Build
 
 To build the [Docker Image](https://www.docker.com/) just run
