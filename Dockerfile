@@ -3,6 +3,13 @@ FROM solr:$SOLR_VERSION
 
 LABEL maintainer=jakob.frank@redlink.co
 
+# Fix upstream-scripts
+RUN sed -i '/-Djetty.host/ d' \
+      /opt/docker-solr/scripts/start-local-solr ;\
+    sed -i '/stop-local-solr/i mkdir -p "$CORE_DIR"' \
+      /opt/docker-solr/scripts/solr-create
+
+
 # Deploy the chatpal configset
 #ADD --chown=solr:solr \
 ADD \
@@ -19,18 +26,21 @@ ADD \
     https://repo.maven.apache.org/maven2/org/carrot2/morfologik-fsa/2.1.1/morfologik-fsa-2.1.1.jar \
     https://repo.maven.apache.org/maven2/ua/net/nlp/morfologik-ukrainian-search/3.9.0/morfologik-ukrainian-search-3.9.0.jar \
     https://repo.redlink.io/mvn/content/groups/public/io/chatpal/chatpal-api/solr-ext/0.0.1-SNAPSHOT/solr-ext-0.0.1-20180420.060145-7.jar \
-    /opt/solr/server/solr/configsets/chatpal/lib/
+    /opt/solr/server/solr/lib/
 
 USER root
 # docker-hub does not yet support the --chown-flag
-RUN chown -R solr:solr /opt/solr/server/solr/configsets/chatpal
+RUN chown -R solr:solr \
+    /opt/solr/server/solr/lib/ \
+    /opt/solr/server/solr/configsets/chatpal
 # create data-dir
-#RUN mkdir -p /data/chatpal && chown -R solr:solr /data/chatpal
+RUN mkdir -p /data/solr && chown -R solr:solr /data/solr
 USER solr
 
-# Create the chatpal solr core
-RUN mkdir -p /opt/solr/server/solr/chatpal/data && \
-    echo -e "name=chatpal\nconfigSet=chatpal\n" >/opt/solr/server/solr/chatpal/core.properties;
-
 # Expose Solr-Data dir
-VOLUME ['/opt/solr/server/solr/chatpal']
+VOLUME ["/data/solr"]
+
+ENV SOLR_DATA_HOME /data/solr/
+
+# Command
+CMD ["solr-create", "-c", "chatpal", "-n", "chatpal", "-d", "/opt/solr/server/solr/configsets/chatpal"]
