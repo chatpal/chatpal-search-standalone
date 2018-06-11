@@ -1,6 +1,12 @@
 # Chatpal-Search Standalone
 
-_Add some description_
+_Rocketchat + Chatpal = Easy and efficient digital business communication._
+
+The standalone version of Chatpal allows you to run the server-backend on your own
+server - having all the data, requests and resources under your control.
+
+If you are looking for a fast and easy-to-use solution, please check out
+[chatpal.io](https://chatpal.io/).
 
 ## Run
 
@@ -15,7 +21,7 @@ and point the chatpal-search provider to the following url: `http://YOUR-DOCKER-
 ### Solr Cloud
 
 If you need to run Chatpal-Search in a Solr-Cloud environment, please have a look into
-[Running Chatpal in a dockerized Solr Cloud](ChatpalSolrCloud.md)
+[Running Chatpal in a dockerized Solr Cloud](ChatpalSolrCloud.md).
 
 ## Build
 

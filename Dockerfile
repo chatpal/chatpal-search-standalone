@@ -2,6 +2,8 @@ ARG SOLR_VERSION=7.2-alpine
 FROM solr:$SOLR_VERSION
 
 LABEL maintainer=jakob.frank@redlink.co
+LABEL vendor="Redlink GmbH"
+LABEL description="Rocketchat + Chatpal = Easy and efficient digital business communication."
 
 # Fix upstream-scripts
 RUN sed -i '/-Djetty.host/ d' \
