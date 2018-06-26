@@ -27,7 +27,7 @@ ADD \
     https://repo.maven.apache.org/maven2/org/carrot2/morfologik-stemming/2.1.1/morfologik-stemming-2.1.1.jar \
     https://repo.maven.apache.org/maven2/org/carrot2/morfologik-fsa/2.1.1/morfologik-fsa-2.1.1.jar \
     https://repo.maven.apache.org/maven2/ua/net/nlp/morfologik-ukrainian-search/3.9.0/morfologik-ukrainian-search-3.9.0.jar \
-    https://repo1.maven.org/maven2/io/chatpal/solr/solr-ext/0.0.1/solr-ext-0.0.1.jar \
+    https://repo1.maven.org/maven2/io/chatpal/solr/solr-ext/0.0.2/solr-ext-0.0.2.jar \
     /opt/solr/server/solr/lib/
 
 USER root
