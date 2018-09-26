@@ -402,17 +402,20 @@
             <!--<str name="mm">2</str>-->
         </lst>
         <lst name="message">
-            <str name="hl.fl">text,text_*</str>
+            <str name="hl.fl">context,text_*</str>
             <bool name="hl.defaultSummary">true</bool>
-            <str name="hl.alternateField">text</str>
+            <str name="hl.alternateField">context</str>
+            <str name="df">context</str>
         </lst>
         <lst name="user">
             <str name="hl.fl">user_*</str>
             <str name="qf">user_username^2 user_name user_email</str>
+            <str name="df">context</str>
         </lst>
         <lst name="room">
             <str name="hl.fl">room_*</str>
             <str name="qf">room_name^3 room_topic^2 room_description room_announcement</str>
+            <str name="df">context</str>
         </lst>
     </requestHandler>
 
