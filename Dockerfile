@@ -19,7 +19,7 @@ ADD \
     /opt/solr/server/solr/configsets
 
 # Fetch additional solr-dependencies
-#ADD --chown=solr:solr \
+#ADD --chown=solr:0 \
 ADD \
     https://oss.sonatype.org/content/repositories/snapshots/io/redlink/solr/compound-word-filter/1.0.0-SNAPSHOT/compound-word-filter-1.0.0-20180304.180502-3.jar \
     https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-analyzers-stempel/7.2.1/lucene-analyzers-stempel-7.2.1.jar \
@@ -32,11 +32,11 @@ ADD \
 
 USER root
 # docker-hub does not yet support the --chown-flag
-RUN chown -R solr:solr \
+RUN chown -R solr:0 \
     /opt/solr/server/solr/lib/ \
     /opt/solr/server/solr/configsets/chatpal
 # create data-dir
-RUN mkdir -p /data/solr && chown -R solr:solr /data/solr
+RUN mkdir -p /data/solr && chown -R solr:0 /data/solr
 USER solr
 
 # Expose Solr-Data dir
