@@ -13,7 +13,7 @@ RUN sed -i '/-Djetty.host/ d' \
 
 
 # Deploy the chatpal configset
-#ADD --chown=solr:solr \
+#ADD --chown=solr:0 \
 ADD \
     solr-conf \
     /opt/solr/server/solr/configsets
