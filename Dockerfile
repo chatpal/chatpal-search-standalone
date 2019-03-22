@@ -46,4 +46,5 @@ VOLUME ["/data/solr"]
 ENV SOLR_DATA_HOME /data/solr/
 
 # Command
-CMD ["solr-create", "-c", "chatpal", "-n", "chatpal", "-d", "/opt/solr/server/solr/configsets/chatpal"]
+#CMD ["solr-create", "-c", "chatpal", "-n", "chatpal", "-d", "/opt/solr/server/solr/configsets/chatpal"]
+CMD ["solr-precreate", "chatpal", "/opt/solr/server/solr/configsets/chatpal"]
