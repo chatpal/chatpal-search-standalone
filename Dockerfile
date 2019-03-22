@@ -32,12 +32,12 @@ ADD \
 
 USER root
 # docker-hub does not yet support the --chown-flag
-RUN chown -R solr:0 \
-    /opt/solr/server/logs \
-    /opt/solr/server/solr/lib/ \
-    /opt/solr/server/solr/configsets/chatpal
+RUN chown -R solr:0 /opt/solr/server && \
+    chmod -R g+w /opt/solr/server
 # create data-dir
-RUN mkdir -p /data/solr && chown -R solr:0 /data/solr
+RUN mkdir -p /data/solr && \
+    chown -R solr:0 /data/solr && \
+    chmod -R g+w /data/solr
 USER solr
 
 # Expose Solr-Data dir
