@@ -33,6 +33,7 @@ ADD \
 USER root
 # docker-hub does not yet support the --chown-flag
 RUN chown -R solr:0 \
+    /opt/solr/server/logs \
     /opt/solr/server/solr/lib/ \
     /opt/solr/server/solr/configsets/chatpal
 # create data-dir
