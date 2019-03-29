@@ -21,7 +21,8 @@ and point the chatpal-search provider to the following url: `http://YOUR-DOCKER-
 ### Solr Cloud
 
 If you need to run Chatpal-Search in a Solr-Cloud environment, please have a look into
-[Running Chatpal in a dockerized Solr Cloud](ChatpalSolrCloud.md).
+[Running Chatpal in a dockerized Solr Cloud](ChatpalSolrCloud.md). It contains some
+useful hints about the `docker-compose.yaml` in this repo.
 
 ## Build
 
@@ -38,3 +39,4 @@ docker push chatpal/search-standalone
 ```
 
 You can find the current version also on [dockerhub](https://hub.docker.com/r/chatpal/search-standalone/).
+

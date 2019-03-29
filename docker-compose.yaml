@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  zookeeper:
+    image: zookeeper
+    restart: always
+    volumes:
+      - zookeeper:/data
+
+  chatpal-search:
+    build: .
+    image: chatpal/search-standalone:latest
+    depends_on:
+      - zookeeper
+    environment:
+      ZK_HOST: zookeeper:2181
+      VIRTUAL_HOST: chatpal-search.local
+    command: "-z zookeeper:2181"
+
+  proxy:
+    image: jwilder/nginx-proxy
+    depends_on:
+      - chatpal-search
+    ports:
+      - 8983:80
+    environment:
+      DEFAULT_HOST: chatpal-search.local
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  configset-upload:
+    image: chatpal/search-standalone:latest
+    restart: on-failure
+    depends_on:
+      - zookeeper
+    command: "/opt/solr/server/scripts/cloud-scripts/zkcli.sh -zkhost zookeeper:2181 -cmd upconfig -confname chatpal -confdir /opt/solr/server/solr/configsets/chatpal/conf"
+
+volumes:
+  zookeeper:
