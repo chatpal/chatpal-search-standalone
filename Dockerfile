@@ -1,4 +1,4 @@
-ARG SOLR_VERSION=7.2-alpine
+ARG SOLR_VERSION=7.7.1-alpine
 FROM solr:$SOLR_VERSION
 
 LABEL maintainer=jakob.frank@redlink.co
@@ -22,12 +22,12 @@ ADD \
 #ADD --chown=solr:0 \
 ADD \
     https://oss.sonatype.org/content/repositories/snapshots/io/redlink/solr/compound-word-filter/1.0.0-SNAPSHOT/compound-word-filter-1.0.0-20180304.180502-3.jar \
-    https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-analyzers-stempel/7.2.1/lucene-analyzers-stempel-7.2.1.jar \
-    https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-analyzers-morfologik/7.2.1/lucene-analyzers-morfologik-7.2.1.jar \
-    https://repo.maven.apache.org/maven2/org/carrot2/morfologik-stemming/2.1.1/morfologik-stemming-2.1.1.jar \
-    https://repo.maven.apache.org/maven2/org/carrot2/morfologik-fsa/2.1.1/morfologik-fsa-2.1.1.jar \
+    https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-analyzers-stempel/7.7.1/lucene-analyzers-stempel-7.7.1.jar \
+    https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-analyzers-morfologik/7.7.1/lucene-analyzers-morfologik-7.7.1.jar \
+    https://repo.maven.apache.org/maven2/org/carrot2/morfologik-stemming/2.1.5/morfologik-stemming-2.1.5.jar \
+    https://repo.maven.apache.org/maven2/org/carrot2/morfologik-fsa/2.1.5/morfologik-fsa-2.1.5.jar \
     https://repo.maven.apache.org/maven2/ua/net/nlp/morfologik-ukrainian-search/3.9.0/morfologik-ukrainian-search-3.9.0.jar \
-    https://repo1.maven.org/maven2/io/chatpal/solr/solr-ext/0.0.3/solr-ext-0.0.3.jar \
+    https://repo1.maven.org/maven2/io/chatpal/solr/solr-ext/0.0.4/solr-ext-0.0.4.jar \
     /opt/solr/server/solr/lib/
 
 USER root
