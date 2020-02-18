@@ -22,11 +22,11 @@ ADD \
 #ADD --chown=solr:0 \
 ADD \
     https://repo1.maven.org/maven2/io/redlink/solr/compound-word-filter/1.0.1/compound-word-filter-1.0.1.jar \
-    https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-analyzers-stempel/7.7.1/lucene-analyzers-stempel-7.7.1.jar \
-    https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-analyzers-morfologik/7.7.1/lucene-analyzers-morfologik-7.7.1.jar \
-    https://repo.maven.apache.org/maven2/org/carrot2/morfologik-stemming/2.1.5/morfologik-stemming-2.1.5.jar \
-    https://repo.maven.apache.org/maven2/org/carrot2/morfologik-fsa/2.1.5/morfologik-fsa-2.1.5.jar \
-    https://repo.maven.apache.org/maven2/ua/net/nlp/morfologik-ukrainian-search/3.9.0/morfologik-ukrainian-search-3.9.0.jar \
+    https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-stempel/7.7.1/lucene-analyzers-stempel-7.7.1.jar \
+    https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-morfologik/7.7.1/lucene-analyzers-morfologik-7.7.1.jar \
+    https://repo1.maven.org/maven2/org/carrot2/morfologik-stemming/2.1.5/morfologik-stemming-2.1.5.jar \
+    https://repo1.maven.org/maven2/org/carrot2/morfologik-fsa/2.1.5/morfologik-fsa-2.1.5.jar \
+    https://repo1.maven.org/maven2/ua/net/nlp/morfologik-ukrainian-search/3.9.0/morfologik-ukrainian-search-3.9.0.jar \
     https://repo1.maven.org/maven2/io/chatpal/solr/solr-ext/0.0.5/solr-ext-0.0.5.jar \
     /opt/solr/server/solr/lib/
 
