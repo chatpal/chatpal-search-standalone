@@ -21,7 +21,7 @@ ADD \
 # Fetch additional solr-dependencies
 #ADD --chown=solr:0 \
 ADD \
-    https://oss.sonatype.org/content/repositories/snapshots/io/redlink/solr/compound-word-filter/1.0.0-SNAPSHOT/compound-word-filter-1.0.0-20180304.180502-3.jar \
+    https://repo1.maven.org/maven2/io/redlink/solr/compound-word-filter/1.0.1/compound-word-filter-1.0.1.jar \
     https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-analyzers-stempel/7.7.1/lucene-analyzers-stempel-7.7.1.jar \
     https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-analyzers-morfologik/7.7.1/lucene-analyzers-morfologik-7.7.1.jar \
     https://repo.maven.apache.org/maven2/org/carrot2/morfologik-stemming/2.1.5/morfologik-stemming-2.1.5.jar \
