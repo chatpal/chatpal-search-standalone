@@ -1,7 +1,7 @@
 ARG SOLR_VERSION=7.7.1-alpine
 FROM solr:$SOLR_VERSION
 
-LABEL maintainer=jakob.frank@redlink.co
+LABEL maintainer=jakob.frank@redlink.at
 LABEL vendor="Redlink GmbH"
 LABEL description="Rocketchat + Chatpal = Easy and efficient digital business communication."
 
@@ -27,7 +27,7 @@ ADD \
     https://repo1.maven.org/maven2/org/carrot2/morfologik-stemming/2.1.5/morfologik-stemming-2.1.5.jar \
     https://repo1.maven.org/maven2/org/carrot2/morfologik-fsa/2.1.5/morfologik-fsa-2.1.5.jar \
     https://repo1.maven.org/maven2/ua/net/nlp/morfologik-ukrainian-search/3.9.0/morfologik-ukrainian-search-3.9.0.jar \
-    https://repo1.maven.org/maven2/io/chatpal/solr/solr-ext/0.0.5/solr-ext-0.0.5.jar \
+    https://repo1.maven.org/maven2/io/chatpal/solr/solr-ext/0.0.6/solr-ext-0.0.6.jar \
     /opt/solr/server/solr/lib/
 
 USER root
