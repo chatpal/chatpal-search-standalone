@@ -10,15 +10,18 @@
   <field name="type" type="string" indexed="true" stored="true" required="true" multiValued="false"/>
 
   <field name="rid" type="string"   indexed="true" stored="true" multiValued="false"/>
+  <field name="mid" type="string"   indexed="true" stored="true" multiValued="false"/>
   <field name="user" type="string"   indexed="true" stored="true" multiValued="false"/>
   <!-- TODO extend to username -->
   <field name="created" type="tdate" indexed="true" stored="true" multiValued="false"/>
   <field name="updated" type="tdate" indexed="true" stored="true" multiValued="false"/>
+  <field name="uploaded" type="tdate" indexed="true" stored="true" multiValued="false"/>
 
   <!-- language fields -->
   <field name="text_none" type="text_general" indexed="true" stored="true" multiValued="false"/>
   <field name="text_cs" type="text_cs" indexed="true" stored="true" multiValued="false"/>
   <field name="text_de" type="text_de" indexed="true" stored="true" multiValued="false"/>
+  <field name="decompose_text_de" type="decompose_de" indexed="true" stored="true" multiValued="false"/>
   <field name="text_el" type="text_el" indexed="true" stored="true" multiValued="false"/>
   <field name="text_en" type="text_en" indexed="true" stored="true" multiValued="false"/>
   <field name="text_es" type="text_es" indexed="true" stored="true" multiValued="false"/>
@@ -45,16 +48,32 @@
   <field name="room_description" type="text_general" indexed="true" stored="true" multiValued="false"/>
   <field name="room_topic" type="text_general" indexed="true" stored="true" multiValued="false"/>
 
+  <field name="file_name" type="text_general" indexed="true" stored="true" multiValued="false"/>
+  <field name="file_desc" type="text_general" indexed="true" stored="true" multiValued="false"/>
+  <field name="file_type" type="text_general" indexed="true" stored="true" multiValued="false"/>
+  <field name="file_link" type="text_general" indexed="true" stored="true" multiValued="false"/>
+  <field name="file_store" type="text_general" indexed="true" stored="true" multiValued="false"/>
+  <field name="file_size" type="long" indexed="true" stored="true" multiValued="false"/>
+
+  <dynamicField name="ignored_*" type="ignored" />
+
+  <field name="suggestion" type="text_all" indexed="true" stored="true" multiValued="true"/>
+
+  <copyField source="text_de" dest="decompose_text_de" />
   <field name="context" type="text_general" indexed="true" stored="true" multiValued="true"/>
   <copyField source="text_*" dest="context" />
   <copyField source="user_*" dest="context" />
   <copyField source="room_*" dest="context" />
+  <copyField source="file_name" dest="context" />
+  <copyField source="file_desc" dest="context" />
+  <copyField source="file_type" dest="context" />
 
-  <field name="suggestion" type="text_all" indexed="true" stored="true" multiValued="true"/>
   <copyField source="text_*" dest="suggestion" />
   <copyField source="user_username" dest="suggestion" />
   <copyField source="user_name" dest="suggestion" />
   <copyField source="room_*" dest="suggestion" />
+  <copyField source="file_name" dest="suggestion" />
+  <copyField source="file_desc" dest="suggestion" />
 
   <uniqueKey>uid</uniqueKey>
 
@@ -66,6 +85,7 @@
   <fieldType name="bool" class="solr.BoolField" sortMissingLast="true" omitNorms="true" />
   <fieldType name="tdate" class="solr.DatePointField" docValues="true" />
   <fieldType name="latlon" class="solr.LatLonPointSpatialField"/>
+  <fieldType name="ignored" indexed="false" stored="false" class="solr.StrField" />
 
   <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
     <analyzer>

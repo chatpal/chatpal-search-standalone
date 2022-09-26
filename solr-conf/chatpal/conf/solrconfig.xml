@@ -3,6 +3,10 @@
     <luceneMatchVersion>6.6.0</luceneMatchVersion>
     <dataDir>${solr.data.dir:}</dataDir>
 
+    <!-- Solr Cell Plugins
++    -->
+    <lib dir="${solr.install.dir:../../..}/contrib/extraction/lib" regex=".*\.jar" />
+    <lib dir="${solr.install.dir:../../..}/dist/" regex="solr-cell-\d.*\.jar" />
     <!-- The DirectoryFactory to use for indexes.
 
          solr.StandardDirectoryFactory is filesystem
@@ -389,7 +393,7 @@
         <lst name="defaults">
             <str name="defType">edismax</str>
             <str name="df">context</str>
-            <str name="fl">_id:id,type,rid,user,created,text,score,user_username,user_name,user_email,room_name,room_topic,room_description,room_announcement</str>
+            <str name="fl">_id:id,type,rid,mid,user,created,updated,text,score,user_username,user_name,user_email,room_name,room_topic,room_description,room_announcement,file_name,file_desc,file_type,file_link,file_store,file_size</str>
 
             <str name="wt">json</str>
             <str name="json.nl">map</str>
@@ -417,6 +421,12 @@
             <str name="qf">room_name^3 room_topic^2 room_description room_announcement</str>
             <str name="df">context</str>
         </lst>
+        <lst name="file">
+            <str name="hl.fl">file_name,file_desc,text_*</str>
+            <int name="hl.maxAnalyzedChars">51200</int> <!-- Matches located after this length will be found but not highlighted! -->
+            <str name="qf">file_name^3 file_desc^2 file_type file_store text_none</str>
+            <str name="df">context</str>
+        </lst>
     </requestHandler>
 
     <!-- UPDATE handler used by chatpal-search -->
@@ -428,6 +438,18 @@
         </lst>
     </requestHandler>
 
+    <!-- File extraction endpoint using Tika -->
+    <requestHandler name="/chatpal/update/extract" startup="lazy" class="solr.extraction.ExtractingRequestHandler" >
+        <lst name="defaults">
+            <str name="update.chain">chatpal</str>
+            <str name="captureAttr">true</str>
+            <str name="lowernames">false</str>
+            <str name="literalsOverride">true</str>
+            <str name="literal.type">file</str>
+            <str name="fmap.content">text_none</str>
+            <str name="uprefix">ignored_</str>
+        </lst>
+    </requestHandler>
     <!-- CLEAR handler used by chatpal-search -->
     <requestHandler name="/chatpal/clear" class="solr.UpdateRequestHandler" >
         <lst name="invariants">
@@ -496,11 +518,21 @@
             <str name="target">text_</str>
         </processor>
 
+        <processor class="TrimFieldUpdateProcessorFactory" />
         <processor class="solr.LogUpdateProcessorFactory" />
         <processor class="solr.DistributedUpdateProcessorFactory" />
         <processor class="solr.RunUpdateProcessorFactory" />
     </updateRequestProcessorChain>
 
+    <chatpal>
+        <generalSearch>
+            <enabled>${chatpal.generalSearch:true}</enabled>
+        </generalSearch>
+        <fileSearch>
+            <enabled>${chatpal.fileSearch:true}</enabled>
+            <maxFileSize>${chatpal.fileSearch.maxFileSize:20971520}</maxFileSize>
+        </fileSearch>
+    </chatpal>
 
     <admin>
         <defaultQuery>*:*</defaultQuery>
